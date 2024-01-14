@@ -11,14 +11,14 @@ jobs:
     - name: refresh apt lists
       run: sudo apt update -y
     - name: install build-deps
-      run: sudo apt install libfontconfig-dev libcups2-dev libx11-dev libxext-dev libxrender-dev libxrandr-dev libxtst-dev libxt-dev libasound2-dev build-essential openjdk-8-jdk -y
+      run: sudo apt install libfontconfig-dev libcups2-dev libx11-dev libxext-dev libxrender-dev libxrandr-dev libxtst-dev libxt-dev libasound2-dev build-essential openjdk-8-jdk gcc-8 g++-8 -y
     - uses: actions/checkout@v3
     - name: chmod it
       run: chmod +x ./configure
     - name: configure
-      run: "bash configure --with-extra-cxxflags='-Wno-error' --with-extra-cflags='-Wno-error'"
+      run: 'bash configure --with-extra-cxxflags="-Wno-error" --with-extra-cflags="-Wno-error"'
     - name: make images
-      run: make images
+      run: 'make WARNINGS_ARE_ERRORS="" images'
     - name: zip it
       run: zip -q -r jdk8u-nosleeps.zip ./build/*/images/jdk/*
     - name: store jdk
