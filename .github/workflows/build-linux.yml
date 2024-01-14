@@ -1,0 +1,29 @@
+name: build the jdk yes very cool
+
+on: workflow_dispatch
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: refresh apt lists
+      run: sudo apt update -y
+    - name: install build-deps
+      run: sudo apt install libfontconfig-dev libcups2-dev libx11-dev libxext-dev libxrender-dev libxrandr-dev libxtst-dev libxt-dev libasound2-dev build-essential openjdk-8-jdk -y
+    - uses: actions/checkout@v3
+    - name: chmod it
+      run: chmod +x ./configure
+    - name: configure
+      run: ./configure
+    - name: make images
+      run: make images
+    - name: zip it
+      run: zip -q -r jdk8u-nosleeps.zip ./build/*/images/jdk/*
+    - name: store jdk
+      uses: actions/upload-artifact@v4.1.0
+      with:
+        name: jdk8u-nosleeps
+        path: jdk8u-nosleeps.zip
+            
