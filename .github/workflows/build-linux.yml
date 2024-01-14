@@ -16,7 +16,7 @@ jobs:
     - name: chmod it
       run: chmod +x ./configure
     - name: configure
-      run: "bash configure --disable-warnings-as-errors"
+      run: "bash configure --with-extra-cxxflags='-Wno-error' --with-extra-cflags='-Wno-error'"
     - name: make images
       run: make images
     - name: zip it
