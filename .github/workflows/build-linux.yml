@@ -16,7 +16,7 @@ jobs:
     - name: chmod it
       run: chmod +x ./configure
     - name: configure
-      run: ./configure --disable-warnings-as-errors
+      run: "./configure --disable-warnings-as-errors"
     - name: make images
       run: make images
     - name: zip it
