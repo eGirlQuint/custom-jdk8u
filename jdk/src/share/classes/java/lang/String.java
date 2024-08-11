@@ -136,6 +136,7 @@ public final class String
      */
     public String() {
         this.value = "".value;
+        System.out.println("String created: " + this);
     }
 
     /**
@@ -151,6 +152,7 @@ public final class String
     public String(String original) {
         this.value = original.value;
         this.hash = original.hash;
+        System.out.println("String created: " + this);
     }
 
     /**
@@ -164,6 +166,7 @@ public final class String
      */
     public String(char value[]) {
         this.value = Arrays.copyOf(value, value.length);
+        System.out.println("String created: " + this);
     }
 
     /**
@@ -205,6 +208,7 @@ public final class String
             throw new StringIndexOutOfBoundsException(offset + count);
         }
         this.value = Arrays.copyOfRange(value, offset, offset+count);
+        System.out.println("String created: " + this);
     }
 
     /**
@@ -370,6 +374,7 @@ public final class String
     @Deprecated
     public String(byte ascii[], int hibyte) {
         this(ascii, hibyte, 0, ascii.length);
+    System.out.println("String created: " + this);
     }
 
     /* Common private utility method used to bounds check the byte array
@@ -424,6 +429,7 @@ public final class String
             throw new NullPointerException("charsetName");
         checkBounds(bytes, offset, length);
         this.value = StringCoding.decode(charsetName, bytes, offset, length);
+    System.out.println("String created: " + this);
     }
 
     /**
@@ -461,6 +467,7 @@ public final class String
             throw new NullPointerException("charset");
         checkBounds(bytes, offset, length);
         this.value =  StringCoding.decode(charset, bytes, offset, length);
+    System.out.println("String created: " + this);
     }
 
     /**
@@ -489,6 +496,8 @@ public final class String
     public String(byte bytes[], String charsetName)
             throws UnsupportedEncodingException {
         this(bytes, 0, bytes.length, charsetName);
+        System.out.println("String created: " + this);
+
     }
 
     /**
@@ -513,6 +522,7 @@ public final class String
      */
     public String(byte bytes[], Charset charset) {
         this(bytes, 0, bytes.length, charset);
+    System.out.println("String created: " + this);
     }
 
     /**
@@ -544,6 +554,8 @@ public final class String
     public String(byte bytes[], int offset, int length) {
         checkBounds(bytes, offset, length);
         this.value = StringCoding.decode(bytes, offset, length);
+    System.out.println("String created: " + this);
+
     }
 
     /**
@@ -564,6 +576,7 @@ public final class String
      */
     public String(byte bytes[]) {
         this(bytes, 0, bytes.length);
+    System.out.println("String created: " + this);
     }
 
     /**
@@ -578,6 +591,7 @@ public final class String
     public String(StringBuffer buffer) {
         synchronized(buffer) {
             this.value = Arrays.copyOf(buffer.getValue(), buffer.length());
+    System.out.println("String created: " + this);
         }
     }
 
@@ -598,6 +612,7 @@ public final class String
      */
     public String(StringBuilder builder) {
         this.value = Arrays.copyOf(builder.getValue(), builder.length());
+    System.out.println("String created: " + this);
     }
 
     /*
@@ -609,6 +624,7 @@ public final class String
     String(char[] value, boolean share) {
         // assert share : "unshared not supported";
         this.value = value;
+    System.out.println("String created: " + this);
     }
 
     /**
