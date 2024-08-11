@@ -1,4 +1,4 @@
-name: hi openjdk that's a nice actions yaml. can i have it?
+name: build / test windows x64
 
 on:
   workflow_dispatch:
